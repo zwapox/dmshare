@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Fiamma Pizza - Pizzas artisanales au feu de bois a Merignac. Note 4.8/5." />
+  <title>Fiamma Pizza - Pizzas artisanales au feu de bois - Merignac</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--rouge:#C0392B;--rouge-fonce:#922B21;--creme:#FAF6EF;--creme-fonce:#F0E9DC;--bois:#8B5E3C;--bois-clair:#C49A6C;--noir:#1A1209;--gris:#5C5348;--or:#D4A853}
+    html{scroll-behavior:smooth}
+    body{font-family:'DM Sans',sans-serif;background:var(--creme);color:var(--noir);overflow-x:hidden}
+
+    /* NAV */
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1rem 2.5rem;background:rgba(26,18,9,0.85);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);transition:background 0.3s}
+    nav.scrolled{background:rgba(26,18,9,0.97)}
+    .nav-logo{text-decoration:none;display:flex;align-items:center}
+    .nav-logo-img{height:60px;width:auto;object-fit:contain;filter:drop-shadow(0 0 4px rgba(0,0,0,0.5))}
+    .nav-logo span{color:var(--rouge);font-style:italic}
+    .nav-links{display:flex;gap:2rem;list-style:none}
+    .nav-links a{color:rgba(255,255,255,0.82);text-decoration:none;font-size:0.9rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;transition:color 0.2s}
+    .nav-links a:hover{color:var(--or)}
+    .nav-cta{background:var(--rouge);color:white!important;padding:0.55rem 1.3rem;border-radius:2px}
+
+    /* HERO - FOND SOMBRE SANS IMAGE */
+    #hero{
+      position:relative;
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      overflow:hidden;
+      background: #0e0905;
+    }
+    .hero-deco{
+      position:absolute;
+      inset:0;
+      background-image:url('images/img_01.jpg');
+      background-size:cover;
+      background-position:center center;
+    }
+    .hero-deco::after{
+      content:'';
+      position:absolute;
+      inset:0;
+      background:linear-gradient(to right, rgba(5,2,1,0.82) 0%, rgba(5,2,1,0.55) 55%, rgba(5,2,1,0.30) 100%);
+    }
+    .hero-dots{
+      position:absolute;
+      inset:0;
+      background-image: radial-gradient(circle, rgba(212,168,83,0.07) 1px, transparent 1px);
+      background-size: 36px 36px;
+    }
+    .hero-flame{
+      position:absolute;
+      right: 8%;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: clamp(8rem, 20vw, 18rem);
+      opacity: 0.06;
+      filter: blur(2px);
+      user-select:none;
+      animation: flicker 4s ease-in-out infinite;
+    }
+    @keyframes flicker{
+      0%,100%{opacity:0.06;transform:translateY(-50%) scale(1)}
+      50%{opacity:0.09;transform:translateY(-52%) scale(1.02)}
+    }
+    .hero-content{position:relative;z-index:2;text-align:center;color:white;padding:2rem;max-width:800px;animation:fadeUp 1s ease both}
+    .hero-badge{display:inline-block;background:var(--rouge);color:white;font-size:0.72rem;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;padding:0.35rem 1rem;margin-bottom:1.5rem;border-radius:1px}
+    .hero-content h1{font-family:'Playfair Display',serif;font-size:clamp(2.8rem,7vw,5.5rem);line-height:1.08;margin-bottom:1.2rem}
+    .hero-content h1 em{font-style:italic;color:var(--or)}
+    .hero-content p{font-size:1.15rem;font-weight:300;line-height:1.7;opacity:0.8;max-width:560px;margin:0 auto 2.5rem}
+    .hero-actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+    .btn-primary{background:var(--rouge);color:white;padding:1rem 2.2rem;font-size:0.92rem;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;text-decoration:none;border-radius:2px;transition:background 0.2s,transform 0.15s;display:inline-block}
+    .btn-primary:hover{background:var(--rouge-fonce);transform:translateY(-2px)}
+    .btn-secondary{background:transparent;color:white;padding:1rem 2.2rem;font-size:0.92rem;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;text-decoration:none;border:1.5px solid rgba(255,255,255,0.4);border-radius:2px;transition:border-color 0.2s,color 0.2s,transform 0.15s;display:inline-block}
+    .btn-secondary:hover{border-color:var(--or);color:var(--or);transform:translateY(-2px)}
+    .hero-scroll{position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:0.5rem;color:rgba(255,255,255,0.4);font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;animation:bounce 2.5s infinite}
+    .hero-scroll::after{content:'';width:1px;height:40px;background:rgba(255,255,255,0.2)}
+
+    /* STATS */
+    .stats-strip{background:var(--noir);padding:1.8rem 2rem;display:flex;justify-content:center;gap:4rem;flex-wrap:wrap}
+    .stat-item{text-align:center;color:white}
+    .stat-item strong{display:block;font-family:'Playfair Display',serif;font-size:2rem;color:var(--or)}
+    .stat-item span{font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;opacity:0.6}
+
+    /* SECTIONS */
+    section{padding:6rem 2rem}
+    .section-label{display:block;font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--rouge);margin-bottom:0.8rem;font-weight:500}
+    h2{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3rem);line-height:1.15;margin-bottom:1.2rem}
+    .container{max-width:1200px;margin:0 auto}
+
+    /* ABOUT */
+    #about{background:var(--creme-fonce)}
+    .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+    .about-img{position:relative}
+    .about-img img{width:100%;height:520px;object-fit:cover;border-radius:2px;display:block}
+    .about-img::before{content:'';position:absolute;top:-1.5rem;left:-1.5rem;right:1.5rem;bottom:1.5rem;border:2px solid var(--bois-clair);border-radius:2px;pointer-events:none}
+    .about-text p{color:var(--gris);line-height:1.8;margin-bottom:1.2rem;font-size:1.02rem}
+    .about-tags{display:flex;flex-wrap:wrap;gap:0.6rem;margin-top:2rem}
+    .tag{background:var(--creme);border:1px solid var(--bois-clair);color:var(--bois);font-size:0.78rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;padding:0.4rem 0.9rem;border-radius:1px}
+
+    /* MENU */
+    #menu{background:var(--creme)}
+    .menu-intro{text-align:center;max-width:600px;margin:0 auto 3rem}
+    .menu-intro p{color:var(--gris);line-height:1.7}
+    .menu-tabs{display:flex;justify-content:center;gap:0.5rem;flex-wrap:wrap;margin-bottom:3rem}
+    .menu-tab{background:transparent;border:1.5px solid var(--bois-clair);color:var(--bois);font-family:'DM Sans',sans-serif;font-size:0.8rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;padding:0.55rem 1.4rem;border-radius:2px;cursor:pointer;transition:all 0.2s}
+    .menu-tab:hover,.menu-tab.active{background:var(--rouge);border-color:var(--rouge);color:white}
+    .menu-category{display:none;width:100%}
+    .menu-category.active{display:block}
+    .pizza-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1.5rem}
+    .pizza-card{background:white;border:1px solid var(--creme-fonce);border-radius:2px;overflow:hidden;transition:box-shadow 0.25s,transform 0.25s;display:flex;flex-direction:column}
+    .pizza-card:hover{box-shadow:0 10px 35px rgba(0,0,0,0.1);transform:translateY(-4px)}
+    .pizza-card-img{width:100%;height:200px;object-fit:cover;display:block;transition:transform 0.4s;flex-shrink:0}
+    .pizza-card:hover .pizza-card-img{transform:scale(1.04)}
+    .pizza-card-noimg{display:flex;flex-direction:column;justify-content:center}
+    .pizza-card-noimg .pizza-card-body{padding:2rem 1.4rem;flex:1;display:flex;flex-direction:column;justify-content:center}
+    .pizza-card-body{padding:1.2rem 1.4rem 1.4rem;display:flex;flex-direction:column;flex:1}
+    .pizza-card-body h3{font-family:'Playfair Display',serif;font-size:1.1rem;margin-bottom:0.4rem;color:var(--noir)}
+    .pizza-card-body p{font-size:0.82rem;color:var(--gris);line-height:1.55;margin-bottom:0.8rem;flex:1}
+    .pizza-card-footer{display:flex;align-items:center;justify-content:space-between;margin-top:auto}
+    .pizza-price{font-size:1rem;font-weight:600;color:var(--rouge)}
+    .pizza-badge{font-size:0.68rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;background:var(--creme-fonce);color:var(--bois);padding:0.2rem 0.6rem;border-radius:1px}
+    .pizza-card-nophoto{width:100%;height:200px;background:var(--creme-fonce);display:flex;align-items:center;justify-content:center;font-size:3.5rem;color:var(--bois-clair)}
+
+    /* Sous-titres de catégorie dans les onglets */
+    .cat-subtitle{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--gris);letter-spacing:0.1em;text-transform:uppercase;margin:2rem 0 1.2rem;padding-bottom:0.5rem;border-bottom:1px solid var(--creme-fonce)}
+    .cat-subtitle:first-child{margin-top:0}
+
+    /* Boissons */
+    .boissons-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:2rem}
+    .bois-section{background:white;border:1px solid var(--creme-fonce);border-radius:2px;padding:1.5rem}
+    .bois-list{display:flex;flex-direction:column;gap:0.6rem}
+    .bois-item{display:flex;align-items:center;gap:1rem;padding:0.5rem 0;border-bottom:1px solid var(--creme-fonce)}
+    .bois-item:last-child{border-bottom:none}
+    .bois-item img{width:48px;height:48px;object-fit:contain;flex-shrink:0;border-radius:2px}
+    .bois-info{display:flex;justify-content:space-between;align-items:center;flex:1;gap:1rem}
+    .bois-info span{font-size:0.9rem;color:var(--noir)}
+    .bois-price{font-weight:600;color:var(--rouge);white-space:nowrap;font-size:0.95rem}
+
+    /* GALERIE */
+    #galerie{background:var(--noir);padding-bottom:4rem}
+    #galerie h2{color:white}
+    #galerie .section-label{color:var(--or)}
+    .gallery-intro{color:rgba(255,255,255,0.55);line-height:1.7;max-width:520px;margin-bottom:2.5rem}
+    .gallery-grid{display:grid;grid-template-columns:repeat(12,1fr);grid-template-rows:240px 240px;gap:0.75rem}
+    .g1{grid-column:span 5;grid-row:span 2}
+    .g2{grid-column:span 4}
+    .g3{grid-column:span 3}
+    .g4{grid-column:span 7}
+    .gallery-grid img{width:100%;height:100%;object-fit:cover;display:block;filter:brightness(0.88) saturate(1.1);transition:filter 0.3s,transform 0.4s;border-radius:2px}
+    .gallery-grid img:hover{filter:brightness(1) saturate(1.25);transform:scale(1.02)}
+
+    /* HORAIRES */
+    #horaires{background:var(--creme-fonce)}
+    .horaires-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
+    .horaires-table{width:100%}
+    .horaires-table tbody tr{border-bottom:1px solid rgba(0,0,0,0.06)}
+    .horaires-table td{padding:0.85rem 0;font-size:0.96rem}
+    .horaires-table td:first-child{font-weight:500;color:var(--noir)}
+    .horaires-table td:last-child{text-align:right;color:var(--gris)}
+    .horaires-table tr.today td{color:var(--rouge);font-weight:600}
+    .closed{color:#aaa!important;font-weight:400!important}
+    .contact-block{display:flex;flex-direction:column;gap:1.5rem}
+    .contact-item{display:flex;align-items:flex-start;gap:1rem}
+    .contact-icon{width:44px;height:44px;background:var(--rouge);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1.1rem}
+    .contact-item-text strong{display:block;font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--gris);margin-bottom:0.2rem}
+    .contact-item-text a{font-size:1rem;color:var(--noir);text-decoration:none;font-weight:400}
+    .contact-item-text a:hover{color:var(--rouge)}
+    .map-frame{width:100%;height:220px;border:none;border-radius:2px;margin-top:1.5rem;filter:grayscale(30%)}
+
+    /* RESEAUX */
+    #reseaux{background:var(--noir);text-align:center;padding:5rem 2rem}
+    #reseaux h2{color:white;margin-bottom:0.8rem}
+    #reseaux p{color:rgba(255,255,255,0.55);margin-bottom:2.5rem;font-size:1rem}
+    .social-links{display:flex;justify-content:center;gap:1.2rem;flex-wrap:wrap}
+    .social-btn{display:inline-flex;align-items:center;gap:0.7rem;background:rgba(255,255,255,0.07);color:white;padding:0.85rem 1.8rem;border:1px solid rgba(255,255,255,0.12);border-radius:2px;text-decoration:none;font-size:0.88rem;font-weight:500;transition:background 0.2s,border-color 0.2s,transform 0.15s}
+    .social-btn:hover{background:var(--rouge);border-color:var(--rouge);transform:translateY(-2px)}
+    .social-btn svg{width:18px;height:18px;fill:currentColor}
+
+    /* LIVRAISON */
+    .livraison-strip{background:var(--rouge);color:white;padding:2rem;text-align:center}
+    .livraison-strip p{font-size:1rem;opacity:0.92;margin-bottom:1rem}
+    .livraison-strip a{display:inline-block;background:white;color:var(--rouge);padding:0.7rem 1.8rem;font-size:0.88rem;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;text-decoration:none;border-radius:2px}
+
+    /* FOOTER */
+    footer{background:#0E0A05;color:rgba(255,255,255,0.4);padding:2.5rem 2rem;text-align:center;font-size:0.82rem}
+    footer a{color:rgba(255,255,255,0.5);text-decoration:none}
+    footer a:hover{color:var(--or)}
+
+    /* ANIMATIONS */
+    @keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+    @keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(8px)}}
+    .reveal{opacity:0;transform:translateY(24px);transition:opacity 0.7s ease,transform 0.7s ease}
+    .reveal.visible{opacity:1;transform:none}
+
+    /* RESPONSIVE */
+    @media(max-width:900px){
+      .about-grid,.horaires-grid{grid-template-columns:1fr;gap:2.5rem}
+      .about-img::before{display:none}
+      .about-img img{height:300px}
+      .gallery-grid{grid-template-columns:1fr 1fr;grid-template-rows:auto}
+      .g1,.g2,.g3,.g4{grid-column:span 1;grid-row:span 1;height:200px}
+      .nav-links{display:none}
+      .hero-flame{display:none}
+    }
+    @media(max-width:580px){
+      nav{padding:1rem 1.2rem}
+      section{padding:4rem 1.2rem}
+      .stats-strip{gap:2rem}
+      .gallery-grid{grid-template-columns:1fr}
+      .g1,.g2,.g3,.g4{height:220px}
+      .hero-actions{flex-direction:column;align-items:center}
+    }
+  </style>
+</head>
+<body>
+
+<nav id="navbar">
+  <a href="#hero" class="nav-logo"><img src="images/img_02.png" alt="Fiamma Pizza" class="nav-logo-img"/></a>
+  <ul class="nav-links">
+    <li><a href="#about">Notre histoire</a></li>
+    <li><a href="#menu">La carte</a></li>
+    <li><a href="#galerie">Galerie</a></li>
+    <li><a href="#horaires">Contact</a></li>
+    <li><a href="tel:0556425137" class="nav-cta">Reserver</a></li>
+  </ul>
+</nav>
+
+<!-- HERO SANS IMAGE DE FOND -->
+<section id="hero">
+  <div class="hero-deco"></div>
+  <div class="hero-dots"></div>
+
+  <div class="hero-content">
+    <span class="hero-badge">Merignac - Bordeaux</span>
+    <h1>L'art de la pizza<br/><em>au feu de bois</em></h1>
+    <p>Pate napolitaine, ingredients italiens d'exception, four a bois traditionnel. Une experience authentique dans un cadre chaleureux et familial.</p>
+    <div class="hero-actions">
+      <a href="tel:0556425137" class="btn-primary">Reserver une table</a>
+      <a href="#menu" class="btn-secondary">Voir la carte</a>
+    </div>
+  </div>
+  <div class="hero-scroll">Decouvrir</div>
+</section>
+
+<div class="stats-strip">
+  <div class="stat-item"><strong>4.8&#9733;</strong><span>Note Google</span></div>
+  <div class="stat-item"><strong>+230</strong><span>Avis clients</span></div>
+  <div class="stat-item"><strong>100%</strong><span>Produits frais</span></div>
+  <div class="stat-item"><strong>Feu de bois</strong><span>Cuisson traditionnelle</span></div>
+</div>
+
+<section id="about">
+  <div class="container">
+    <div class="about-grid reveal">
+      <div class="about-img">
+        <img src="images/img_03.webp" alt="Salle du restaurant Fiamma Pizza" loading="lazy"/>
+      </div>
+      <div class="about-text">
+        <span class="section-label">Notre histoire</span>
+        <h2>Une pizzeria familiale et passionnee</h2>
+        <p>Bienvenue chez Fiamma Pizza, pizzeria artisanale nichee au coeur de Merignac. Notre equipe met chaque jour toute son energie et son amour dans la preparation de pizzas d'exception.</p>
+        <p>Nos ingredients sont importes directement d'Italie : farine typique 00, tomates San Marzano, mozzarella di bufala, charcuteries fines. Le four a bois fait le reste.</p>
+        <p>La salle climatisee, accueillante et familiale, peut egalement etre privatisee pour vos evenements. Terrasse, bar, cocktails, wifi inclus.</p>
+        <div class="about-tags">
+          <span class="tag">Ingredients italiens</span>
+          <span class="tag">Four a bois</span>
+          <span class="tag">Terrasse</span>
+          <span class="tag">Privatisable</span>
+          <span class="tag">Acces PMR</span>
+          <span class="tag">Animaux bienvenus</span>
+          <span class="tag">Bar et cocktails</span>
+          <span class="tag">Wifi</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MENU avec vraies photos -->
+<section id="menu">
+  <div class="container">
+    <div class="menu-intro reveal">
+      <span class="section-label">La carte</span>
+      <h2>Notre carte</h2>
+      <p>Pizzas, pastas, salades, desserts et boissons — tout ce qu'il faut pour une belle soiree italienne.</p>
+    </div>
+
+    <div class="menu-tabs reveal">
+      <button class="menu-tab active" onclick="showCat('pizzas',this)">🍕 Pizzas</button>
+      <button class="menu-tab" onclick="showCat('pastas',this)">🍝 Pastas</button>
+      <button class="menu-tab" onclick="showCat('salades',this)">🥗 Salades</button>
+      <button class="menu-tab" onclick="showCat('desserts',this)">🍮 Desserts</button>
+      <button class="menu-tab" onclick="showCat('boissons',this)">🍷 Boissons</button>
+    </div>
+
+    <!-- ===== PIZZAS ===== -->
+    <div id="cat-pizzas" class="menu-category active reveal">
+      <div class="cat-subtitle">Traditionnelles</div>
+      <div class="pizza-grid">
+        <div class="pizza-card"><img class="pizza-card-img" src="https://www.fiammapizza.fr/images/pict_1.jpg" alt="Margherita" loading="lazy"/><div class="pizza-card-body"><h3>Margherita</h3><p>Tomate, mozzarella, basilic frais, huile d'olive.</p><div class="pizza-card-footer"><span class="pizza-price">11.90€</span><span class="pizza-badge">Tradizionale</span></div></div></div>
+        <div class="pizza-card"><img class="pizza-card-img" src="https://www.fiammapizza.fr/images/pict_2.jpg" alt="Romana" loading="lazy"/><div class="pizza-card-body"><h3>Romana</h3><p>Tomate, mozzarella, jambon blanc italien.</p><div class="pizza-card-footer"><span class="pizza-price">12.70€</span><span class="pizza-badge">Tradizionale</span></div></div></div>
+        <div class="pizza-card"><img class="pizza-card-img" src="https://www.fiammapizza.fr/images/pict_97.jpg" alt="Chorizo" loading="lazy"/><div class="pizza-card-body"><h3>Chorizo</h3><p>Tomate, mozzarella, chorizo.</p><div class="pizza-card-footer"><span class="pizza-price">13.40€</span><span class="pizza-badge">Tradizionale</span></div></div></div>
+        <div class="pizza-card"><img class="pizza-card-img" src="https://www.fiammapizza.fr/images/pict_6.jpg" alt="Regina" loading="lazy"/><div class="pizza-card-body"><h3>Regina</h3><p>Tomate, mozzarella, jambon blanc italien, champignons.</p><div class="pizza-card-footer"><span class="pizza-price">13.40€</span><span class="pizza-badge">Tradizionale</span></div></div></div>
+        <div class="pizza-card"><img class="pizza-card-img" src="https://www.fiammapizza.fr/images/pict_9.jpg" alt="Calzone" loading="lazy"/><div class="pizza-card-body"><h3>Calzone</h3><p>Tomate, mozzarella, jambon blanc, oeuf, creme fraiche, champignons.</p><div class="pizza-card-footer"><span class="pizza-price">13.80€</span><span class="pizza-badge">Tradizionale</span></div></div></div>
+        <div class="pizza-card"><img class="pizza-card-img" src="https://www.fiammapizza.fr/images/pict_20.jpg" alt="Capra Miele" loading="lazy"/><div class="pizza-card-body"><h3>Capra Miele</h3><p>Tomate, mozzarella, chevre, miel.</p><div class="pizza-card-footer"><span class="pizza-price">13.80€</span><span class="pizza-badge">Tradizionale</span></div></div></div>
+        <div class="pizza-card"><img class="pizza-card-img" src="https://www.fiammapizza.fr/images/pict_56.jpg" alt="Carbonara" loading="lazy"/><div class="pizza-card-body"><h3>Carbonara</h3><p>Creme fraiche, mozzarella, lardons, oignons, jaune d'oeuf.</p><div class="pizza-card-footer"><span class="pizza-price">13.80€</span><span class="pizza-badge">Tradizionale</span></div></div></div>
+        <div class="pizza-card"><img class="pizza-card-img" src="https://www.fiammapizza.fr/images/pict_98.jpg" alt="Napoletana" loading="lazy"/><div class="pizza-card-body"><h3>Napoletana</h3><p>Tomate, mozzarella, anchois, capres.</p><div class="pizza-card-footer"><span class="pizza-price">13.80€</span><span class="pizza-badge">Tradizionale</span></div></div></div>
+        <div class="pizza-card"><img class="pizza-card-img" src="https://www.fiammapizza.fr/images/pict_21.jpg" alt="4 Formaggi" loading="lazy"/><div class="pizza-card-body"><h3>4 Formaggi</h3><p>Tomate, mozzarella, chevre, gorgonzola, parmigiano reggiano.</p><div class="pizza-card-footer"><span class="pizza-price">14.30€</span><span class="pizza-badge">Tradizionale</span></div></div></div>
+      </div>
+      <div class="cat-subtitle">Originales</div>
+      <div class="pizza-grid">
+        <div class="pizza-card"><img class="pizza-card-img" src="https://www.fiammapizza.fr/images/pict_14.jpg" alt="Pollo Miele" loading="lazy"/><div class="pizza-card-body"><h3>Pollo Miele</h3><p>Creme fraiche, mozzarella, poulet, chevre, miel.</p><div class="pizza-card-footer"><span class="pizza-price">15.30€</span><span class="pizza-badge">Originale</span></div></div></div>
+        <div class="pizza-card"><img class="pizza-card-img" src="https://www.fiammapizza.fr/images/pict_59.jpg" alt="Vegetariana" loading="lazy"/><div class="pizza-card-body"><h3>Vegetariana</h3><p>Tomate, mozzarella, choux rouge, roquette, tomates cerises, champignons, courgettes, parmesan, creme balsamique.</p><div class="pizza-card-footer"><span class="pizza-price">15.30€</span><span class="pizza-badge">Originale</span></div></div></div>
+        <div class="pizza-card"><img class="pizza-card-img" src="https://www.fiammapizza.fr/images/pict_16.jpg" alt="Savoyarde" loading="lazy"/><div class="pizza-card-body"><h3>Savoyarde</h3><p>Creme fraiche, mozzarella, pommes de terre, lardons, raclette, reblochon.</p><div class="pizza-card-footer"><span class="pizza-price">15.50€</span><span class="pizza-badge">Originale</span></div></div></div>
+        <div class="pizza-card"><img class="pizza-card-img" src="https://www.fiammapizza.fr/images/pict_110.jpg" alt="Vita Gialla" loading="lazy"/><div class="pizza-card-body"><h3>Vita Gialla</h3><p>Tomate jaune, mozzarella, stracciatella, tomates cerises confites, crispy bacon, amandes effilees.</p><div class="pizza-card-footer"><span class="pizza-price">16.30€</span><span class="pizza-badge">Originale</span></div></div></div>
+        <div class="pizza-card"><img class="pizza-card-img" src="https://www.fiammapizza.fr/images/pict_111.jpg" alt="Salsiccia" loading="lazy"/><div class="pizza-card-body"><h3>Salsiccia</h3><p>Tomate jaune, mozzarella, pousses d'epinard, pignons de pin torrefies, saucisse, stracciatella.</p><div class="pizza-card-footer"><span class="pizza-price">16.50€</span><span class="pizza-badge">Originale</span></div></div></div>
+      </div>
+      <div class="cat-subtitle">Speciales</div>
+      <div class="pizza-grid">
+        <div class="pizza-card"><img class="pizza-card-img" src="https://www.fiammapizza.fr/images/pict_23.jpg" alt="Saumon" loading="lazy"/><div class="pizza-card-body"><h3>Saumon</h3><p>Creme fraiche, mozzarella, stracciatella, saumon, creme balsamique, citron.</p><div class="pizza-card-footer"><span class="pizza-price">17.00€</span><span class="pizza-badge speciale">Speciale</span></div></div></div>
+        <div class="pizza-card"><img class="pizza-card-img" src="https://www.fiammapizza.fr/images/pict_102.jpg" alt="Dolce Vita" loading="lazy"/><div class="pizza-card-body"><h3>Dolce Vita</h3><p>Tomate, mozzarella, bresaola IGP, stracciatella, pesto de roquette maison, copeaux de parmesan, huile d'olive.</p><div class="pizza-card-footer"><span class="pizza-price">17.70€</span><span class="pizza-badge speciale">Speciale</span></div></div></div>
+        <div class="pizza-card"><img class="pizza-card-img" src="https://www.fiammapizza.fr/images/pict_57.jpg" alt="Mortadella" loading="lazy"/><div class="pizza-card-body"><h3>Mortadella</h3><p>Creme fraiche, mozzarella, mortadelle, pesto de pistache, eclats de pistaches, burrata, basilic frais.</p><div class="pizza-card-footer"><span class="pizza-price">17.70€</span><span class="pizza-badge speciale">Speciale</span></div></div></div>
+        <div class="pizza-card"><img class="pizza-card-img" src="https://www.fiammapizza.fr/images/pict_25.jpg" alt="Rocamadour" loading="lazy"/><div class="pizza-card-body"><h3>Rocamadour</h3><p>Creme fraiche, mozzarella, pancetta, rocamadour AOP, miel, pignons de pin, roquette.</p><div class="pizza-card-footer"><span class="pizza-price">17.70€</span><span class="pizza-badge speciale">Speciale</span></div></div></div>
+        <div class="pizza-card"><img class="pizza-card-img" src="https://www.fiammapizza.fr/images/pict_18.jpg" alt="Parma" loading="lazy"/><div class="pizza-card-body"><h3>Parma</h3><p>Pesto, mozzarella, jambon sec italien, tomates confites, burrata, copeaux de parmesan, roquette, creme balsamique.</p><div class="pizza-card-footer"><span class="pizza-price">18.00€</span><span class="pizza-badge speciale">Speciale</span></div></div></div>
+        <div class="pizza-card"><img class="pizza-card-img" src="https://www.fiammapizza.fr/images/pict_112.jpg" alt="Pastr'amma" loading="lazy"/><div class="pizza-card-body"><h3>Pastr'amma</h3><p>Tomate jaune, mozzarella, pastrami, pesto de roquette maison, burrata, amandes effilees torrefees.</p><div class="pizza-card-footer"><span class="pizza-price">18.00€</span><span class="pizza-badge speciale">Speciale</span></div></div></div>
+        <div class="pizza-card"><img class="pizza-card-img" src="https://www.fiammapizza.fr/images/pict_22.jpg" alt="Tartufata" loading="lazy"/><div class="pizza-card-body"><h3>Tartufata</h3><p>Creme de truffe, mozzarella, stracciatella, copeaux de truffe fraiche, noisettes truffees, basilic, huile d'olive.</p><div class="pizza-card-footer"><span class="pizza-price">19.50€</span><span class="pizza-badge speciale">Speciale</span></div></div></div>
+      </div>
+    </div>
+
+    <!-- ===== PASTAS ===== -->
+    <div id="cat-pastas" class="menu-category">
+      <div class="pizza-grid">
+        <div class="pizza-card"><img class="pizza-card-img" src="https://www.fiammapizza.fr/images/pict_26.jpg" alt="Carbonara pasta" loading="lazy"/><div class="pizza-card-body"><h3>Carbonara</h3><p>Parmigiano reggiano, pancetta, jaune d'oeuf, copeaux de parmesan.</p><div class="pizza-card-footer"><span class="pizza-price">15.00€</span><span class="pizza-badge">Pasta</span></div></div></div>
+        <div class="pizza-card"><img class="pizza-card-img" src="https://www.fiammapizza.fr/images/pict_99.jpg" alt="Alla Caprese" loading="lazy"/><div class="pizza-card-body"><h3>Alla Caprese</h3><p>Sauce tomate, jambon sec italien, copeaux de parmesan, burrata.</p><div class="pizza-card-footer"><span class="pizza-price">16.00€</span><span class="pizza-badge">Pasta</span></div></div></div>
+        <div class="pizza-card"><img class="pizza-card-img" src="https://www.fiammapizza.fr/images/pict_105.jpg" alt="Verde" loading="lazy"/><div class="pizza-card-body"><h3>Verde</h3><p>Pesto, pancetta, stracciatella, pignons de pin torrefies, copeaux de parmesan.</p><div class="pizza-card-footer"><span class="pizza-price">16.00€</span><span class="pizza-badge">Pasta</span></div></div></div>
+        <div class="pizza-card"><div class="pizza-card-nophoto">🍝</div><div class="pizza-card-body"><h3>Tartufoo</h3><p>Creme de truffe, parmigiano reggiano, stracciatella, copeaux de parmesan, noisettes truffees, basilic, huile d'olive.</p><div class="pizza-card-footer"><span class="pizza-price">18.00€</span><span class="pizza-badge speciale">Speciale</span></div></div></div>
+      </div>
+    </div>
+
+    <!-- ===== SALADES ===== -->
+    <div id="cat-salades" class="menu-category">
+      <div class="pizza-grid">
+        <div class="pizza-card"><div class="pizza-card-nophoto">🥗</div><div class="pizza-card-body"><h3>Caesar</h3><p>Salade, tomates cerises confites, poulet pane, crispy bacon, oeuf mollet, copeaux de parmesan, croutons, sauce caesar.</p><div class="pizza-card-footer"><span class="pizza-price">16.50€</span><span class="pizza-badge">Salade</span></div></div></div>
+        <div class="pizza-card"><div class="pizza-card-nophoto">🥗</div><div class="pizza-card-body"><h3>Fresca</h3><p>Salade, tomates cerises confites, jambon sec italien, burrata, copeaux de parmesan, choux rouge, creme balsamique.</p><div class="pizza-card-footer"><span class="pizza-price">16.50€</span><span class="pizza-badge">Salade</span></div></div></div>
+      </div>
+    </div>
+
+    <!-- ===== DESSERTS ===== -->
+    <div id="cat-desserts" class="menu-category">
+      <div class="pizza-grid">
+        <div class="pizza-card"><img class="pizza-card-img" src="https://www.fiammapizza.fr/images/pict_28.jpg" alt="Gelato" loading="lazy"/><div class="pizza-card-body"><h3>Gelato</h3><p>Glace italienne — nappage chocolat, caramel ou fruits rouges.</p><div class="pizza-card-footer"><span class="pizza-price">3.80€</span><span class="pizza-badge">Dessert</span></div></div></div>
+        <div class="pizza-card"><img class="pizza-card-img" src="https://www.fiammapizza.fr/images/pict_63.jpg" alt="Panna Cotta" loading="lazy"/><div class="pizza-card-body"><h3>Panna Cotta fruits rouges</h3><p>Panna cotta fait maison avec coulis de fruits rouges ou passion.</p><div class="pizza-card-footer"><span class="pizza-price">3.80€</span><span class="pizza-badge">Dessert</span></div></div></div>
+        <div class="pizza-card"><img class="pizza-card-img" src="https://www.fiammapizza.fr/images/pict_40.jpg" alt="Tiramisu" loading="lazy"/><div class="pizza-card-body"><h3>Tiramisu au cafe</h3><p>Tiramisu au cafe fait maison, avec ou sans speculoos.</p><div class="pizza-card-footer"><span class="pizza-price">3.80€</span><span class="pizza-badge">Dessert</span></div></div></div>
+        <div class="pizza-card"><img class="pizza-card-img" src="https://www.fiammapizza.fr/images/pict_107.jpg" alt="Angioletti fritti" loading="lazy"/><div class="pizza-card-body"><h3>Angioletti fritti</h3><p>Boules de pate a pizza frites, nutella, sucre glace.</p><div class="pizza-card-footer"><span class="pizza-price">7.00€</span><span class="pizza-badge">Dessert</span></div></div></div>
+        <div class="pizza-card"><img class="pizza-card-img" src="https://www.fiammapizza.fr/images/pict_108.jpg" alt="Cannoli sicilien" loading="lazy"/><div class="pizza-card-body"><h3>Cannoli sicilien pistache</h3><p>Biscuit de pate frite, creme de mascarpone pistache, eclats de pistaches.</p><div class="pizza-card-footer"><span class="pizza-price">7.00€</span><span class="pizza-badge">Dessert</span></div></div></div>
+        <div class="pizza-card"><img class="pizza-card-img" src="https://www.fiammapizza.fr/images/pict_109.jpg" alt="Pizza Nutella" loading="lazy"/><div class="pizza-card-body"><h3>Pizza au Nutella</h3><p>La celebre pate a pizza au feu de bois garnie de Nutella.</p><div class="pizza-card-footer"><span class="pizza-price">7.00€</span><span class="pizza-badge">Dessert</span></div></div></div>
+      </div>
+    </div>
+
+    <!-- ===== BOISSONS ===== -->
+    <div id="cat-boissons" class="menu-category">
+      <div class="boissons-grid">
+
+        <div class="bois-section">
+          <div class="cat-subtitle">Sans alcool</div>
+          <div class="bois-list">
+            <div class="bois-item"><img src="https://www.fiammapizza.fr/images/pict_42.png" alt="Eau"/><div class="bois-info"><span>Eau 50cl</span><span class="bois-price">1.50€</span></div></div>
+            <div class="bois-item"><img src="https://www.fiammapizza.fr/images/pict_41.jpg" alt="Coca"/><div class="bois-info"><span>Coca-Cola 33cl</span><span class="bois-price">2.00€</span></div></div>
+            <div class="bois-item"><img src="https://www.fiammapizza.fr/images/pict_69.jpg" alt="Ice Tea"/><div class="bois-info"><span>Ice Tea 33cl</span><span class="bois-price">2.00€</span></div></div>
+            <div class="bois-item"><img src="https://www.fiammapizza.fr/images/pict_70.jpg" alt="Orangina"/><div class="bois-info"><span>Orangina 33cl</span><span class="bois-price">2.00€</span></div></div>
+            <div class="bois-item"><img src="https://www.fiammapizza.fr/images/pict_93.jpg" alt="Schweppes"/><div class="bois-info"><span>Schweppes 33cl</span><span class="bois-price">2.00€</span></div></div>
+            <div class="bois-item"><img src="https://www.fiammapizza.fr/images/pict_71.jpg" alt="Sprite"/><div class="bois-info"><span>Sprite 33cl</span><span class="bois-price">2.00€</span></div></div>
+            <div class="bois-item"><img src="https://www.fiammapizza.fr/images/pict_95.png" alt="Eau 1L"/><div class="bois-info"><span>Eau 1L</span><span class="bois-price">2.70€</span></div></div>
+            <div class="bois-item"><img src="https://www.fiammapizza.fr/images/pict_44.jpg" alt="San Pellegrino"/><div class="bois-info"><span>San Pellegrino 50cl</span><span class="bois-price">2.80€</span></div></div>
+            <div class="bois-item"><img src="https://www.fiammapizza.fr/images/pict_45.png" alt="Coca 1L"/><div class="bois-info"><span>Coca-Cola 1L</span><span class="bois-price">2.90€</span></div></div>
+            <div class="bois-item"><img src="https://www.fiammapizza.fr/images/pict_43.png" alt="San Pellegrino 1L"/><div class="bois-info"><span>San Pellegrino 1L</span><span class="bois-price">3.80€</span></div></div>
+          </div>
+        </div>
+
+        <div class="bois-section">
+          <div class="cat-subtitle">Bieres</div>
+          <div class="bois-list">
+            <div class="bois-item"><img src="https://www.fiammapizza.fr/images/pict_48.jpg" alt="Corona"/><div class="bois-info"><span>Corona 33cl</span><span class="bois-price">3.50€</span></div></div>
+            <div class="bois-item"><img src="https://www.fiammapizza.fr/images/pict_78.jpg" alt="Desperados"/><div class="bois-info"><span>Desperados 33cl</span><span class="bois-price">3.50€</span></div></div>
+            <div class="bois-item"><img src="https://www.fiammapizza.fr/images/pict_76.jpg" alt="Angelo Poretti"/><div class="bois-info"><span>Angelo Poretti 33cl</span><span class="bois-price">3.60€</span></div></div>
+            <div class="bois-item"><img src="https://www.fiammapizza.fr/images/pict_74.png" alt="Peroni"/><div class="bois-info"><span>Peroni 33cl</span><span class="bois-price">3.60€</span></div></div>
+            <div class="bois-item"><img src="https://www.fiammapizza.fr/images/pict_47.png" alt="Bianca Fresca"/><div class="bois-info"><span>Bianca Fresca des Pouilles 33cl</span><span class="bois-price">5.00€</span></div></div>
+          </div>
+        </div>
+
+        <div class="bois-section">
+          <div class="cat-subtitle">Vins rouges</div>
+          <div class="bois-list">
+            <div class="bois-item"><img src="https://www.fiammapizza.fr/images/pict_50.jpg" alt="Chianti 37.5cl"/><div class="bois-info"><span>Chianti 37,5cl</span><span class="bois-price">8.00€</span></div></div>
+            <div class="bois-item"><img src="https://www.fiammapizza.fr/images/pict_79.jpg" alt="Montepulciano 37.5cl"/><div class="bois-info"><span>Montepulciano 37,5cl</span><span class="bois-price">9.00€</span></div></div>
+            <div class="bois-item"><img src="https://www.fiammapizza.fr/images/pict_49.jpg" alt="Chianti 75cl"/><div class="bois-info"><span>Chianti 75cl</span><span class="bois-price">12.00€</span></div></div>
+            <div class="bois-item"><img src="https://www.fiammapizza.fr/images/pict_80.jpg" alt="Montepulciano 75cl"/><div class="bois-info"><span>Montepulciano 75cl</span><span class="bois-price">13.00€</span></div></div>
+          </div>
+        </div>
+
+        <div class="bois-section">
+          <div class="cat-subtitle">Vins blancs</div>
+          <div class="bois-list">
+            <div class="bois-item"><img src="https://www.fiammapizza.fr/images/pict_86.jpg" alt="Sauvignon"/><div class="bois-info"><span>Cotes de Gascogne Sauvignon 75cl</span><span class="bois-price">15.00€</span></div></div>
+            <div class="bois-item"><img src="https://www.fiammapizza.fr/images/pict_85.jpg" alt="Gros Manseng"/><div class="bois-info"><span>Cotes de Gascogne Gros Manseng 75cl</span><span class="bois-price">17.00€</span></div></div>
+          </div>
+        </div>
+
+        <div class="bois-section">
+          <div class="cat-subtitle">Vins roses</div>
+          <div class="bois-list">
+            <div class="bois-item"><img src="https://www.fiammapizza.fr/images/pict_83.jpg" alt="Bardolino rose"/><div class="bois-info"><span>Bardolino 37,5cl</span><span class="bois-price">8.00€</span></div></div>
+            <div class="bois-item"><img src="https://www.fiammapizza.fr/images/pict_81.jpg" alt="Rosato"/><div class="bois-info"><span>Rosato 75cl</span><span class="bois-price">11.00€</span></div></div>
+            <div class="bois-item"><img src="https://www.fiammapizza.fr/images/pict_84.jpg" alt="Bardolino 75cl"/><div class="bois-info"><span>Bardolino 75cl</span><span class="bois-price">12.00€</span></div></div>
+          </div>
+        </div>
+
+        <div class="bois-section">
+          <div class="cat-subtitle">Vins petillants</div>
+          <div class="bois-list">
+            <div class="bois-item"><img src="https://www.fiammapizza.fr/images/pict_54.jpg" alt="Lambrusco Rose"/><div class="bois-info"><span>Lambrusco Rose 37,5cl</span><span class="bois-price">8.00€</span></div></div>
+            <div class="bois-item"><img src="https://www.fiammapizza.fr/images/pict_54.jpg" alt="Lambrusco Rouge"/><div class="bois-info"><span>Lambrusco Rouge 37,5cl</span><span class="bois-price">8.00€</span></div></div>
+            <div class="bois-item"><img src="https://www.fiammapizza.fr/images/pict_51.jpg" alt="Lambrusco Rose 75cl"/><div class="bois-info"><span>Lambrusco Rose 75cl</span><span class="bois-price">12.00€</span></div></div>
+            <div class="bois-item"><img src="https://www.fiammapizza.fr/images/pict_51.jpg" alt="Lambrusco Rouge 75cl"/><div class="bois-info"><span>Lambrusco Rouge 75cl</span><span class="bois-price">12.00€</span></div></div>
+            <div class="bois-item"><img src="https://www.fiammapizza.fr/images/pict_53.jpg" alt="Proseco"/><div class="bois-info"><span>Proseco Superiore Millesimato 75cl</span><span class="bois-price">17.00€</span></div></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:3rem" class="reveal">
+      <a href="https://www.ubereats.com/fr/store/fiamma-pizza/yNGIg20nSmuRFHlANapnBQ" target="_blank" rel="noopener" class="btn-primary">Commander en ligne</a>
+    </div>
+  </div>
+</section>
+
+<section id="galerie">
+  <div class="container">
+    <div class="reveal">
+      <span class="section-label">Galerie</span>
+      <h2>L'ambiance Fiamma</h2>
+      <p class="gallery-intro">Un cadre chaleureux, une salle spacieuse et climatisee, une terrasse ouverte aux beaux jours.</p>
+    </div>
+    <div class="gallery-grid reveal">
+      <img class="g1" src="images/img_04.webp" alt="Salle du restaurant Fiamma Pizza" loading="lazy"/>
+      <img class="g2" src="images/img_05.webp" alt="Four a bois Fiamma Pizza" loading="lazy"/>
+      <img class="g3" src="images/img_06.webp" alt="Equipe Fiamma Pizza en cuisine" loading="lazy" style="object-position:center center"/>
+      <img class="g4" src="https://www.fiammapizza.fr/images/pict_57.jpg" alt="Mortadella" loading="lazy" style="object-position:center center"/>
+    </div>
+  </div>
+</section>
+
+<div class="livraison-strip">
+  <p>Commandez Fiamma Pizza chez vous via Uber Eats - livraison disponible a Merignac</p>
+  <a href="https://www.ubereats.com/fr/store/fiamma-pizza/yNGIg20nSmuRFHlANapnBQ" target="_blank" rel="noopener">Commander sur Uber Eats</a>
+</div>
+
+<section id="horaires">
+  <div class="container">
+    <div class="horaires-grid">
+      <div class="reveal">
+        <span class="section-label">Horaires d'ouverture</span>
+        <h2>Quand nous trouver ?</h2>
+        <table class="horaires-table">
+          <tbody>
+            <tr><td class="closed">Lundi</td><td class="closed">Ferme</td></tr>
+            <tr><td>Mardi</td><td>11h30 - 14h00 &nbsp;-&nbsp; 18h00 - 21h30</td></tr>
+            <tr><td>Mercredi</td><td>11h30 - 14h00 &nbsp;-&nbsp; 18h00 - 21h30</td></tr>
+            <tr><td>Jeudi</td><td>11h30 - 14h00 &nbsp;-&nbsp; 18h00 - 21h30</td></tr>
+            <tr><td>Vendredi</td><td>11h30 - 14h00 &nbsp;-&nbsp; 18h00 - 22h00</td></tr>
+            <tr><td>Samedi</td><td>11h30 - 14h00 &nbsp;-&nbsp; 18h00 - 22h00</td></tr>
+            <tr><td class="closed">Dimanche</td><td class="closed">Ferme</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="contact-block reveal">
+        <span class="section-label">Contact et Acces</span>
+        <h2>Nous rejoindre</h2>
+        <div class="contact-item">
+          <div class="contact-icon"><svg viewBox="0 0 24 24" fill="white" width="20" height="20"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></div>
+          <div class="contact-item-text">
+            <strong>Adresse</strong>
+            <a href="https://maps.google.com/?q=82+Avenue+des+Freres+Robinson+33700+Merignac" target="_blank" rel="noopener">82 Av. des Freres Robinson, 33700 Merignac</a>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon"><svg viewBox="0 0 24 24" fill="white" width="20" height="20"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg></div>
+          <div class="contact-item-text"><strong>Telephone</strong><a href="tel:0556425137">05 56 42 51 37</a></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon"><svg viewBox="0 0 24 24" fill="white" width="20" height="20"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></div>
+          <div class="contact-item-text"><strong>Site web</strong><a href="https://www.fiammapizza.fr" target="_blank">www.fiammapizza.fr</a></div>
+        </div>
+        <iframe class="map-frame" src="https://www.openstreetmap.org/export/embed.html?bbox=-0.6594%2C44.8278%2C-0.6294%2C44.8378&amp;layer=mapnik&amp;marker=44.8328%2C-0.6444" title="Localisation Fiamma Pizza Merignac" loading="lazy" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="reseaux">
+  <div class="container">
+    <span class="section-label" style="color:var(--or)">Nous suivre</span>
+    <h2>Retrouvez-nous sur les reseaux</h2>
+    <p>Actualites, nouvelles pizzas, evenements - suivez l'aventure Fiamma !</p>
+    <div class="social-links">
+      <a href="https://www.facebook.com/fiammapizza" target="_blank" rel="noopener" class="social-btn">
+        <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        Facebook
+      </a>
+      <a href="https://www.instagram.com/fiammapizza" target="_blank" rel="noopener" class="social-btn">
+        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        Instagram
+      </a>
+      <a href="https://www.ubereats.com/fr/store/fiamma-pizza/yNGIg20nSmuRFHlANapnBQ" target="_blank" rel="noopener" class="social-btn">
+        <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 4c1.657 0 3 1.343 3 3v5c0 1.657-1.343 3-3 3s-3-1.343-3-3V7c0-1.657 1.343-3 3-3zm6 14H6v-2h12v2z"/></svg>
+        Uber Eats
+      </a>
+      <a href="https://maps.google.com/?q=Fiamma+Pizza+Merignac" target="_blank" rel="noopener" class="social-btn">
+        <svg viewBox="0 0 24 24"><path d="M12 0C7.802 0 4 3.403 4 7.602 4 11.8 7.469 16.812 12 24c4.531-7.188 8-12.2 8-16.398C20 3.403 16.199 0 12 0zm0 11c-1.657 0-3-1.343-3-3s1.343-3 3-3 3 1.343 3 3-1.343 3-3 3z"/></svg>
+        Google Maps
+      </a>
+      <a href="https://fr.restaurantguru.com/Fiamma-Pizza-Merignac" target="_blank" rel="noopener" class="social-btn">
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        Avis clients
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>2025 Fiamma Pizza - 82 Av. des Freres Robinson, 33700 Merignac - <a href="tel:0556425137">05 56 42 51 37</a></p>
+  <p style="margin-top:0.5rem">Pizzas artisanales au feu de bois - Mardi au Samedi midi et soir</p>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
