@@ -6,4 +6,4 @@ const navbar=document.getElementById('navbar');
   const days=['Dimanche','Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi'];
   const today=days[new Date().getDay()];
   document.querySelectorAll('.horaires-table tr').forEach(row=>{if(row.cells[0]&&row.cells[0].textContent.trim()===today)row.classList.add('today')});
-  function showCat(cat,btn){document.querySelectorAll('.menu-category').forEach(c=>c.classList.remove('active'));document.querySelectorAll('.menu-tab').forEach(t=>t.classList.remove('active'));document.getElementById('cat-'+cat).classList.add('active');btn.classList.add('active');}
+  function showCat(cat,btn){document.querySelectorAll('.menu-category').forEach(c=>c.classList.remove('active'));document.querySelectorAll('.menu-tab').forEach(t=>t.classList.remove('active'));const el=document.getElementById('cat-'+cat);el.classList.add('active');el.classList.add('visible');btn.classList.add('active');}

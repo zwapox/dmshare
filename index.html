@@ -113,7 +113,7 @@
     .menu-tab:hover,.menu-tab.active{background:var(--rouge);border-color:var(--rouge);color:white}
     .menu-category{display:none;width:100%}
     .menu-category.active{display:block}
-    .pizza-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1.5rem}
+    .pizza-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(260px,100%),1fr));gap:1.5rem}
     .pizza-card{background:white;border:1px solid var(--creme-fonce);border-radius:2px;overflow:hidden;transition:box-shadow 0.25s,transform 0.25s;display:flex;flex-direction:column}
     .pizza-card:hover{box-shadow:0 10px 35px rgba(0,0,0,0.1);transform:translateY(-4px)}
     .pizza-card-img{width:100%;height:200px;object-fit:cover;display:block;transition:transform 0.4s;flex-shrink:0}
@@ -301,7 +301,7 @@
     </div>
 
     <!-- ===== PIZZAS ===== -->
-    <div id="cat-pizzas" class="menu-category active reveal">
+    <div id="cat-pizzas" class="menu-category active">
       <div class="cat-subtitle">Traditionnelles</div>
       <div class="pizza-grid">
         <div class="pizza-card"><img class="pizza-card-img" src="https://www.fiammapizza.fr/images/pict_1.jpg" alt="Margherita" loading="lazy"/><div class="pizza-card-body"><h3>Margherita</h3><p>Tomate, mozzarella, basilic frais, huile d'olive.</p><div class="pizza-card-footer"><span class="pizza-price">11.90€</span><span class="pizza-badge">Tradizionale</span></div></div></div>
