@@ -307,6 +307,41 @@ nav.scrolled {
 }
 
 /* ========================================
+   LOYALTY
+   ======================================== */
+.loyalty-strip {
+  background: var(--rouge);
+  color: white;
+  padding: 1rem 1.5rem;
+}
+
+.loyalty-strip-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  text-align: center;
+}
+
+.loyalty-label {
+  display: inline-block;
+  padding: 0.35rem 0.8rem;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.loyalty-strip p {
+  margin: 0;
+  font-size: 1rem;
+  color: white;
+}
+
+/* ========================================
    STATS
    ======================================== */
 .stats-strip {
