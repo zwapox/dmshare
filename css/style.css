@@ -1278,6 +1278,12 @@ footer a:hover {
 
 /* TERROIR / INGREDIENTS */
 .terroir-section { background: var(--creme); }
+.terroir-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+}
 .ingredients-list {
   list-style: none;
   display: grid;
@@ -1508,6 +1514,7 @@ footer a:hover {
   .story-grid { grid-template-columns: 1fr; gap: 2.5rem; }
   .story-img::before { display: none; }
   .story-img img { height: 300px; }
+  .terroir-grid { grid-template-columns: 1fr; gap: 2.5rem; }
   .valeurs-grid { grid-template-columns: 1fr 1fr; }
   .signatures-grid { grid-template-columns: 1fr 1fr; }
   .chiffres-grid { grid-template-columns: repeat(3, 1fr); }
