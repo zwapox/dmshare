@@ -61,13 +61,13 @@ document.querySelectorAll('.menu-tab').forEach(btn => {
   });
 });
 
-// === COMMANDER SCROLL CENTER ===
+// === COMMANDER SCROLL CENTER (center the restaurant card) ===
 document.querySelectorAll('a[href="#commander"]').forEach(link => {
   link.addEventListener('click', (e) => {
     e.preventDefault();
-    const el = document.getElementById('commander');
-    if (el) {
-      const rect = el.getBoundingClientRect();
+    const card = document.querySelector('.commander-card--restaurant');
+    if (card) {
+      const rect = card.getBoundingClientRect();
       const scrollTop = window.pageYOffset + rect.top - (window.innerHeight - rect.height) / 2;
       window.scrollTo({ top: scrollTop, behavior: 'smooth' });
     }

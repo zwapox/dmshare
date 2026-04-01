@@ -48,9 +48,7 @@ nav {
   align-items: center;
   justify-content: space-between;
   padding: 1rem 2.5rem;
-  background: rgba(26, 18, 9, 0.85);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  background: rgba(26, 18, 9, 0.95);
   transition: background 0.3s;
 }
 
@@ -881,7 +879,7 @@ h2 {
 .commander-card {
   position: relative;
   flex: 1;
-  min-width: 280px;
+  min-width: min(280px, 100%);
   max-width: 380px;
   padding: 2.2rem 2rem;
   border-radius: 4px;
@@ -1062,6 +1060,8 @@ footer a:hover {
 
   .nav-burger {
     display: block;
+    position: relative;
+    z-index: 200;
   }
 
   .nav-links {
@@ -1069,32 +1069,36 @@ footer a:hover {
     position: fixed;
     top: 0;
     left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(26, 18, 9, 0.97);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+    background: rgba(26, 18, 9, 1);
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 2rem;
-    z-index: 100;
+    gap: 2.5rem;
+    z-index: 150;
     padding: 2rem;
+    list-style: none;
   }
 
   .nav-links.open {
     display: flex;
   }
 
+  .nav-links li {
+    text-align: center;
+  }
+
   .nav-links a {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     letter-spacing: 0.12em;
   }
 
   .nav-links .nav-cta {
     margin-top: 1rem;
     padding: 0.8rem 2rem;
-    font-size: 1rem;
+    font-size: 1.1rem;
   }
 }
 
