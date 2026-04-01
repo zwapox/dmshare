@@ -196,10 +196,10 @@ nav.scrolled {
 
 .hero-mini-logo {
   display: block;
-  width: clamp(90px, 14vw, 140px);
+  width: clamp(42px, 6vw, 64px);
   height: auto;
-  margin: 0 auto 1rem;
-  filter: drop-shadow(0 4px 16px rgba(0, 0, 0, 0.35));
+  margin: 0 auto 0.65rem;
+  filter: drop-shadow(0 3px 10px rgba(0, 0, 0, 0.28));
 }
 
 .hero-badge {
