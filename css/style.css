@@ -1019,8 +1019,9 @@ h2 {
 
 .btn-commander-restaurant {
   display: inline-flex;
+  flex-direction: column;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.18rem;
   background: var(--rouge);
   color: white;
   padding: 1rem 2.2rem;
@@ -1033,6 +1034,18 @@ h2 {
   margin-top: 0.6rem;
   width: 100%;
   justify-content: center;
+}
+
+.btn-commander-label {
+  display: block;
+}
+
+.btn-commander-subline {
+  display: block;
+  font-size: 0.88rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  opacity: 0.92;
 }
 
 .btn-commander-restaurant:hover {
