@@ -194,6 +194,14 @@ nav.scrolled {
   animation: fadeUp 1s ease both;
 }
 
+.hero-mini-logo {
+  display: block;
+  width: clamp(90px, 14vw, 140px);
+  height: auto;
+  margin: 0 auto 1rem;
+  filter: drop-shadow(0 4px 16px rgba(0, 0, 0, 0.35));
+}
+
 .hero-badge {
   display: inline-block;
   background: var(--rouge);
