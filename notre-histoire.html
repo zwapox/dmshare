@@ -12,10 +12,17 @@
 
   <!-- OPEN GRAPH -->
   <meta property="og:type" content="restaurant" />
+  <meta property="og:url" content="https://www.fiammapizza.fr/notre-histoire.html" />
   <meta property="og:title" content="Notre Histoire | Fiamma Pizza - Pizzeria Artisanale à Mérignac" />
-  <meta property="og:description" content="Fiamma Pizza, c'est l'histoire d'une passion pour la pizza napolitaine au feu de bois. Découvrez notre savoir-faire artisanal au cœur de Mérignac. Note 4.8/5 Google, 9.7/10 TheFork. Pizza napolitaine, burrata, truffe. Proche aéroport Bordeaux." />
-  <meta property="og:image" content="images/img_03.webp" />
+  <meta property="og:description" content="Fiamma Pizza, c'est l'histoire d'une passion pour la pizza napolitaine au feu de bois. Découvrez notre savoir-faire artisanal au cœur de Mérignac." />
+  <meta property="og:image" content="https://www.fiammapizza.fr/images/img_03.webp" />
   <meta property="og:locale" content="fr_FR" />
+
+  <!-- TWITTER CARD -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Notre Histoire | Fiamma Pizza - Pizzeria Artisanale à Mérignac" />
+  <meta name="twitter:description" content="Découvrez l'histoire de Fiamma Pizza, pizzeria artisanale au feu de bois à Mérignac (Bordeaux)." />
+  <meta name="twitter:image" content="https://www.fiammapizza.fr/images/img_03.webp" />
 
   <!-- SCHEMA.ORG - LocalBusiness + Restaurant -->
   <script type="application/ld+json">
@@ -23,7 +30,7 @@
     "@context": "https://schema.org",
     "@type": "Restaurant",
     "name": "Fiamma Pizza",
-    "image": "images/img_03.webp",
+    "image": "https://www.fiammapizza.fr/images/img_03.webp",
     "description": "Pizzeria artisanale au feu de bois à Mérignac. Pâte maison, ingrédients italiens sélectionnés, four à bois traditionnel.",
     "servesCuisine": ["Pizza napolitaine", "Cuisine italienne", "Pasta"],
     "priceRange": "€€",
@@ -81,8 +88,8 @@
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     "itemListElement": [
-      { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "index.html" },
-      { "@type": "ListItem", "position": 2, "name": "Notre Histoire", "item": "notre-histoire.html" }
+      { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://www.fiammapizza.fr/" },
+      { "@type": "ListItem", "position": 2, "name": "Notre Histoire", "item": "https://www.fiammapizza.fr/notre-histoire.html" }
     ]
   }
   </script>
@@ -194,6 +201,8 @@
   </ul>
 </nav>
 
+<main>
+
 <!-- HERO -->
 <div class="page-hero">
   <div class="page-hero-dots"></div>
@@ -229,7 +238,7 @@
 <!-- NOS VALEURS -->
 <section class="content-section valeurs-section">
   <div class="container-wide">
-    <div style="text-align:center;max-width:600px;margin:0 auto">
+    <div class="section-intro">
       <span class="section-label">Ce qui nous définit</span>
       <h2>Trois piliers, une philosophie</h2>
       <p>La pizzeria artisanale que nous avons bâtie à Mérignac repose sur des engagements concrets, que vous retrouvez dans chaque assiette.</p>
@@ -285,7 +294,7 @@
   <div class="container-wide">
     <div class="chiffres-grid">
       <div class="chiffre-item">
-        <strong>4.8<span style="font-size:1.5rem">/5</span></strong>
+        <strong>4.8<span class="chiffre-sub">/5</span></strong>
         <span>Note Google</span>
         <p>Plus de 230 avis clients authentiques</p>
       </div>
@@ -305,7 +314,7 @@
         <p>Aucun produit surgelé, jamais</p>
       </div>
       <div class="chiffre-item">
-        <strong>9.7<span style="font-size:1.5rem">/10</span></strong>
+        <strong>9.7<span class="chiffre-sub">/10</span></strong>
         <span>Note TheFork</span>
         <p>Plébiscité par les clients sur TheFork</p>
       </div>
@@ -337,7 +346,7 @@
 <!-- NOS PIZZAS SIGNATURES -->
 <section class="content-section signatures-section">
   <div class="container-wide">
-    <div style="text-align:center;max-width:650px;margin:0 auto">
+    <div class="section-intro">
       <span class="section-label">Nos pizzas signatures</span>
       <h2>Les incontournables de la carte</h2>
       <p>Découvrez nos créations les plus appréciées, préparées avec des ingrédients italiens d'exception et cuites au feu de bois dans notre four traditionnel à Mérignac.</p>
@@ -370,7 +379,7 @@
 <!-- FAQ -->
 <section class="content-section faq-section">
   <div class="container">
-    <div style="text-align:center;max-width:600px;margin:0 auto 0">
+    <div class="section-intro">
       <span class="section-label">Questions fréquentes</span>
       <h2>Tout ce que vous voulez savoir</h2>
     </div>
@@ -422,14 +431,14 @@
 <!-- LOCALISATION AÉROPORT -->
 <section class="content-section localisation-section">
   <div class="container">
-    <div style="text-align:center;max-width:650px;margin:0 auto">
+    <div class="section-intro">
       <span class="section-label">Situation idéale</span>
       <h2>Au c&oelig;ur de Mérignac, à deux pas de l'aéroport</h2>
       <p>Fiamma Pizza est idéalement situé à <strong>Mérignac</strong>, à quelques minutes seulement de l'<strong>aéroport Bordeaux-Mérignac</strong>. Que vous veniez de <strong>Pessac</strong>, <strong>Le Haillan</strong>, <strong>Eysines</strong>, <strong>Saint-Médard-en-Jalles</strong>, <strong>Le Bouscat</strong>, <strong>Caudéran</strong>, <strong>Martignas-sur-Jalle</strong> ou <strong>Gradignan</strong>, notre pizzeria artisanale vous accueille dans un cadre chaleureux et convivial.</p>
     </div>
-    <div style="margin-top:2rem;text-align:center">
+    <div class="localisation-body">
       <p><strong>Facilement accessible depuis la rocade (sortie 9)</strong>, avec un parking à proximité, Fiamma Pizza est le lieu parfait pour une pause gourmande dans l'<strong>ouest bordelais</strong>. Habitants de <strong>Bordeaux Métropole</strong>, voyageurs en transit à l'aéroport ou familles des communes voisines comme <strong>Blanquefort</strong>, <strong>Bruges</strong> ou <strong>Talence</strong>&nbsp;— notre restaurant dispose de tous les équipements pour vous recevoir dans les meilleures conditions.</p>
-      <div style="margin-top:1.5rem">
+      <div class="localisation-tags">
         <span class="localisation-tag">Salle climatisée</span>
         <span class="localisation-tag">Terrasse</span>
         <span class="localisation-tag">Accès PMR</span>
@@ -440,7 +449,7 @@
         <span class="localisation-tag">Parking à proximité</span>
         <span class="localisation-tag">Proche aéroport Bordeaux-Mérignac</span>
       </div>
-      <p style="margin-top:1.5rem">Envie de <strong>privatiser notre salle</strong> pour un anniversaire, un repas d'entreprise ou une célébration familiale ? Contactez-nous au <a href="tel:0556425137" style="color:var(--rouge);font-weight:500">05 56 42 51 37</a> pour organiser votre événement.</p>
+      <p class="localisation-cta">Envie de <strong>privatiser notre salle</strong> pour un anniversaire, un repas d'entreprise ou une célébration familiale ? Contactez-nous au <a href="tel:0556425137">05 56 42 51 37</a> pour organiser votre événement.</p>
     </div>
   </div>
 </section>
@@ -448,7 +457,7 @@
 <!-- CTA FINAL -->
 <section class="cta-section">
   <div class="container">
-    <span class="section-label" style="color:rgba(255,255,255,0.6)">Venez nous rendre visite</span>
+    <span class="section-label cta-label">Venez nous rendre visite</span>
     <h2>Prêt à vivre l'expérience Fiamma ?</h2>
     <p>Réservez votre table dès maintenant ou parcourez notre carte pour composer votre commande idéale. On vous attend à Mérignac.</p>
     <div class="cta-buttons">
@@ -458,9 +467,11 @@
   </div>
 </section>
 
+</main>
+
 <footer>
   <p>&copy; 2025 Fiamma Pizza &mdash; 82 Avenue des Frères Robinson, 33700 Mérignac &mdash; <a href="tel:0556425137">05 56 42 51 37</a></p>
-  <p style="margin-top:0.5rem">Pizzeria artisanale au feu de bois &mdash; Mardi au Samedi midi et soir &mdash; <a href="index.html">Retour à l'accueil</a></p>
+  <p class="footer-sub">Pizzeria artisanale au feu de bois &mdash; Mardi au Samedi midi et soir &mdash; <a href="index.html">Retour à l'accueil</a></p>
 </footer>
 
 <script src="js/histoire.js"></script>
